@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/param_x0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:textColor="@color/black_light"
+        android:textColorHint="@color/app_light"
+        android:hint="X0"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/param_a"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:textColor="@color/black_light"
+        android:textColorHint="@color/app_light"
+        android:hint="A"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/param_c"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:textColor="@color/black_light"
+        android:textColorHint="@color/app_light"
+        android:hint="C"
+        android:textSize="16sp" />
+
+    <EditText
+        android:id="@+id/param_m"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:inputType="number"
+        android:textColor="@color/black_light"
+        android:textColorHint="@color/app_light"
+        android:hint="M"
+        android:textSize="16sp" />
+
+</LinearLayout>

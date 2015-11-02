@@ -4,4 +4,24 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_splash">SplashActivity</string>
+
+    <string name="generator">Generador</string>
+    <string name="generator_mixed">Mixto</string>
+    <string name="generator_multiplicative">Multiplicativo</string>
+    <string name="parameters">Parámetros</string>
+    <string name="function">Función</string>
+
+    <string name="title">NuGen</string>
+    <string name="agree">Ok</string>
+    <string name="disagree">Cancelar</string>
+
+    <string-array name="namesFunctions">
+        <item>Uniforme</item>
+        <item>Exponencial</item>
+        <item>Normal</item>
+        <item>Triangular</item>
+        <item>Poisson</item>
+        <item>Binomial</item>
+    </string-array>
+
 </resources>
