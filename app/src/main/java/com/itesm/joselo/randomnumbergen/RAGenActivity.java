@@ -1,5 +1,6 @@
 package com.itesm.joselo.randomnumbergen;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,15 +51,6 @@ public class RAGenActivity extends AppCompatActivity {
         m         = "-1";
 
         valuesGen = new HashMap<>();
-        //generador
-        //x0
-        //a
-        //c
-        //m
-        //funcion
-        //valueN
-        //valueM
-        //
     }
 
     @Override
@@ -162,6 +154,22 @@ public class RAGenActivity extends AppCompatActivity {
         valuesGen.put("valueN", paramv_n.getText().toString());
         valuesGen.put("valueM", paramv_m.getText().toString());
         Toast.makeText(this, "Datos almacenados", Toast.LENGTH_LONG).show();
+
+        Bundle bundle = new Bundle();
+        //bundle.putSerializable("HASHPARAMS",valuesGen);
+        bundle.putString("GENERATOR", generator);
+        bundle.putString("VALUE_X0", x0);
+        bundle.putString("VALUE_A", a);
+        bundle.putString("VALUE_C", c);
+        bundle.putString("VALUE_MOD", m);
+        bundle.putString("FUNCTION", funcion);
+        bundle.putString("VALUE_N", empty(paramv_n.getText().toString())? "0": paramv_n.getText().toString());
+        bundle.putString("VALUE_M", empty(paramv_m.getText().toString())? "0": paramv_m.getText().toString());
+
+        Intent i = new Intent(this, RAPlotData.class);
+        i.putExtras(bundle);
+        startActivity(i);
+        overridePendingTransition(R.anim.slide_up_info, R.anim.no_change);
 
     }
 

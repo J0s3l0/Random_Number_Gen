@@ -23,6 +23,9 @@
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden">
         </activity>
+        <activity
+            android:name=".RAPlotData">
+        </activity>
     </application>
 
 </manifest>
