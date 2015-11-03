@@ -24,7 +24,8 @@
             android:windowSoftInputMode="stateHidden">
         </activity>
         <activity
-            android:name=".RAPlotData">
+            android:name=".RAPlotData"
+            android:screenOrientation="landscape">
         </activity>
     </application>
 

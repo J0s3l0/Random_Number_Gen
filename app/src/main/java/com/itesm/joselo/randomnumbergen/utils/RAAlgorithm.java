@@ -1,11 +1,13 @@
 package com.itesm.joselo.randomnumbergen.utils;
 
+import android.support.annotation.IntegerRes;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 public class RAAlgorithm {
 
-    public ArrayList<Integer> generateRandomNumbers(int N){
+    public static ArrayList<Integer> generateRandomNumbers(int N){
 
         ArrayList<Integer> serie = new ArrayList<> ();
         //Inicializamos el ArrayList lleno de ceros
@@ -21,7 +23,7 @@ public class RAAlgorithm {
 
     }
 
-    public ArrayList<Integer> generateMixed(String x0, String a, String c, String m, String n){
+    public static ArrayList<Integer> generateMixed(String x0, String a, String c, String m, String n){
         ArrayList<Integer> valuesData = new ArrayList<>();
 
         int value_x0 = Integer.parseInt(x0);
@@ -45,7 +47,7 @@ public class RAAlgorithm {
         return valuesData;
     }
 
-    public ArrayList<Integer> generateMultiplicative(String x0, String a, String m, String n){
+    public static ArrayList<Integer> generateMultiplicative(String x0, String a, String m, String n){
         ArrayList<Integer> valuesData = new ArrayList<>();
 
         int value_x0 = Integer.parseInt(x0);
@@ -68,7 +70,7 @@ public class RAAlgorithm {
         return valuesData;
     }
 
-    public ArrayList<Float> generateUniform(ArrayList<Integer> arrayValues/*, String a, String m, String n*/){
+    public static ArrayList<Float> generateUniform(ArrayList<Integer> arrayValues/*, String a, String m, String n*/){
         ArrayList<Float> valuesData = new ArrayList<>();
 
         for (int i = 0; i < arrayValues.size(); ++i) {
@@ -78,7 +80,7 @@ public class RAAlgorithm {
         return valuesData;
     }
 
-    public ArrayList<Float> generateExponential(ArrayList<Float> arrayValues, String lambda, String m, String n){
+    public static ArrayList<Float> generateExponential(ArrayList<Integer> arrayValues, String lambda, String m, String n){
         //ArrayList<Float> valuesData = new ArrayList<>();
         float value_lambda = Float.valueOf(lambda);
         int value_m = Integer.parseInt(m);
@@ -103,14 +105,47 @@ public class RAAlgorithm {
         return X;
     }
 
-    /*
-    public ArrayList<Integer> generateNormal(String x0, String a, String m, String n){
-        ArrayList<Integer> valuesData = new ArrayList<>();
 
-        return valuesData;
-    }*/
+    public static ArrayList<Float> generateNormal(ArrayList<Integer> arrayValues, String mean, String var, String m, String n){
+        ArrayList<Float> result = new ArrayList<>();
 
-    public ArrayList<Float> generateTriangular(ArrayList<Integer> arrayValues, String n, String m, String a, String b, String c){
+        int value_n = Integer.parseInt(n);
+        int value_m = Integer.parseInt(m);
+        float value_mean = Float.valueOf(mean);
+        float value_var = Float.valueOf(var);
+        float value_x = 0;
+
+        for (int i = 0; i < value_n; ++i) {
+            value_x = value_mean + (normalZ(arrayValues, value_n, value_m) * value_var);
+            result.add(value_x);
+        }
+
+        return result;
+    }
+
+
+    static float normalZ(ArrayList<Integer> arrayValues, int n, int m) {
+        ArrayList<Float> R = null;
+        float z = 0;
+        float value_m = Float.valueOf(m);
+        float value_n = Float.valueOf(n);
+
+        for (int i = 0; i < arrayValues.size(); ++i) {
+            R.add(arrayValues.get(i) / value_m);
+        }
+
+        Random random = new Random();
+        for (int i = 0; i < value_n; ++i) {
+            int size = R.size();
+            float R1 = R.get(random.nextInt() % size);
+            z += (R1 - (value_n / 2.0)) / (Math.sqrt(value_n / 12.0));
+        }
+
+        return z;
+
+    }
+
+    public static ArrayList<Float> generateTriangular(ArrayList<Integer> arrayValues, String n, String m, String a, String b, String c){
 
         int value_n = Integer.parseInt(n);
         int value_m = Integer.parseInt(m);
@@ -143,18 +178,68 @@ public class RAAlgorithm {
         return X;
     }
 
-    /*
-    public ArrayList<Integer> generatePoisson(String x0, String a, String m, String n){
-        ArrayList<Integer> valuesData = new ArrayList<>();
 
-        return valuesData;
+    public static ArrayList<Float> generatePoisson(ArrayList<Integer> arrayValues,String lambda, String m, String n){
+
+        int value_n = Integer.parseInt(n);
+        int value_m = Integer.parseInt(m);
+        float value_lambda = Float.valueOf(lambda);
+
+        float L = (float) Math.exp(-value_lambda);
+        float p;
+        int k = 0;
+
+        ArrayList<Float> R = null;
+        ArrayList<Float> X = new ArrayList<>();
+
+        for (int i = 0; i < arrayValues.size(); ++i) {
+            R.add(arrayValues.get(i)/ (float)value_m);
+        }
+
+        Random random = new Random();
+        for (int i = 0; i < value_n; ++i) {
+            p = 1.0f;
+            k = 0;
+            while (p > L) {
+                ++k;
+                int pos = random.nextInt() % (R.size());
+                float R1 = R.get(pos);
+                p = p * R1;
+            }
+            X.add((float)(k-1));
+        }
+
+        return X;
     }
 
-    public ArrayList<Integer> generateBinommial(String x0, String a, String m, String n){
-        ArrayList<Integer> valuesData = new ArrayList<>();
+    public static ArrayList<Float> generateBinommial(ArrayList<Integer> arrayValues, String x0, String a, String m, String n, String p){
 
-        return valuesData;
-    }*/
+        ArrayList<Float> R = null;
+        ArrayList<Float> X = new ArrayList<>();
+        int value_n = Integer.parseInt(n);
+        int value_m = Integer.parseInt(m);
+        float value_p = Float.valueOf(p);
+
+        for (int i = 0; i < arrayValues.size(); ++i) {
+            R.add(arrayValues.get(i) / (float)value_m);
+        }
+
+        Random random = null;
+        for (int i = 0; i < value_n; ++i) {
+            int x = 0;
+
+            for (int j = 0; j < value_n; ++j) {
+                int pos = random.nextInt(R.size());
+                float R1 = R.get(pos);
+                if (R1 < value_p) {
+                    ++x;
+                }
+            }
+            X.add((float)x);
+        }
+
+        return X;
+    }
 
 
 }

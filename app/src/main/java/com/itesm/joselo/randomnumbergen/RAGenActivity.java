@@ -145,18 +145,41 @@ public class RAGenActivity extends AppCompatActivity {
 
     public void onGeneratorClicked(View v){
 
-        valuesGen.put("generator", generator);
+        /*valuesGen.put("generator", generator);
         valuesGen.put("x0", x0);
         valuesGen.put("a", a);
         valuesGen.put("c", c);
         valuesGen.put("m", m);
         valuesGen.put("function", funcion);
         valuesGen.put("valueN", paramv_n.getText().toString());
-        valuesGen.put("valueM", paramv_m.getText().toString());
+        valuesGen.put("valueM", paramv_m.getText().toString());*/
         Toast.makeText(this, "Datos almacenados", Toast.LENGTH_LONG).show();
 
+/*
+    arguments["n"] = 10000;
+    arguments["m"] = 100000;
+    arguments["mean"] = 5.23;
+    arguments["var"] = 2.3;
+    arguments["a"] = 0;
+    arguments["b"] = 1;
+    arguments["c"] = 2;
+
+    uniformArguments["n"] = 10000;
+    uniformArguments["x0"] = 17;
+    uniformArguments["a"] = 203;
+    uniformArguments["m"] = 100000;
+* */
+
+        generator = "mixed";
+        x0 = "17";
+        a="203";
+        c="2";
+        m="10000";
+        funcion="binomial";
+        paramv_m.setText("10000");
+        paramv_n.setText("1000");
+
         Bundle bundle = new Bundle();
-        //bundle.putSerializable("HASHPARAMS",valuesGen);
         bundle.putString("GENERATOR", generator);
         bundle.putString("VALUE_X0", x0);
         bundle.putString("VALUE_A", a);
