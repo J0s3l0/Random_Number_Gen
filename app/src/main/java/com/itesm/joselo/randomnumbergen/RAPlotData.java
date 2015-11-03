@@ -154,9 +154,6 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
     * */
     private void setData(int count, float range) {
 
-        //valueDatasetAlgor = RAAlgorithm.generateUniform(valueDataset);
-        genAlgorithm();
-
         ArrayList<String> xVals = new ArrayList<>();
         for (int i = 0; i < count; i++) {
             xVals.add(String.valueOf(i % count));
@@ -292,6 +289,11 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
         setData(Integer.parseInt(m), Float.valueOf(n));
     }
 
+    public void doAlgor(){
+        setData(Integer.parseInt(m), Float.valueOf(n));
+        new GenerateNumbersWithAlgor().execute(nameFunction);
+    }
+
     /*
     * Tarea Asíncrona para generar el dataset de los números aleatorios
     * de acuerdo al generador elegido {Mixto, Multiplicativo}
@@ -315,7 +317,7 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
 
         protected void onPostExecute(Integer result) {
             if(result > 0)
-                plotData();
+                doAlgor();
 
         }
     }
@@ -333,11 +335,7 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
     private class GenerateNumbersWithAlgor extends AsyncTask<String, Integer, Integer> {
 
         protected Integer doInBackground(String... params) {
-            int request = 0;
-            if(params[0].equals("mixed"))
-                request = genMixed();
-            else
-                request = genMulti();
+            int request = genAlgorithm();
 
             return request;
         }
@@ -345,7 +343,6 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
         protected void onPostExecute(Integer result) {
             if(result > 0)
                 plotData();
-
         }
     }
 
@@ -353,7 +350,6 @@ public class RAPlotData extends FragmentActivity implements OnChartValueSelected
     /*
     * Widget de tiempo de espera
     * */
-
     private void waitPlease(){
         new MaterialDialog.Builder(this)
                 .title(R.string.progress_dialog)

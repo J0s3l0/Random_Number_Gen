@@ -7,6 +7,13 @@ import java.util.Random;
 
 public class RAAlgorithm {
 
+    /*
+    * Generador de un ArrayList<Integer> usando simplemente
+    * la clase Random predefinida en el lenguaje
+    *
+    * param
+    * cantidad de número a generar = int => N
+    * */
     public static ArrayList<Integer> generateRandomNumbers(int N){
 
         ArrayList<Integer> serie = new ArrayList<> ();
@@ -23,6 +30,16 @@ public class RAAlgorithm {
 
     }
 
+    /*
+    * Generador de un dataset ArrayList<Integer> con el generador congruencial mixto
+    *
+    * params     dentro de la inicializacion se realiza el cast
+    * x0 = String => x0
+    * a  = String => a
+    * c  = String => c
+    * m  = String => m
+    * n  = String => n
+    * */
     public static ArrayList<Integer> generateMixed(String x0, String a, String c, String m, String n){
         ArrayList<Integer> valuesData = new ArrayList<>();
 
@@ -47,6 +64,15 @@ public class RAAlgorithm {
         return valuesData;
     }
 
+    /*
+    * Generador de un dataset ArrayList<Integer> con el generador congruencial multiplicativo
+    *
+    * params     dentro de la inicializacion se realiza el cast
+    * x0 = String => x0
+    * a  = String => a
+    * m  = String => m
+    * n  = String => n
+    * */
     public static ArrayList<Integer> generateMultiplicative(String x0, String a, String m, String n){
         ArrayList<Integer> valuesData = new ArrayList<>();
 
@@ -70,6 +96,13 @@ public class RAAlgorithm {
         return valuesData;
     }
 
+    /*
+    * Funcion de distribucion uniforme
+    *
+    * param
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * */
     public static ArrayList<Float> generateUniform(ArrayList<Integer> arrayValues/*, String a, String m, String n*/){
         ArrayList<Float> valuesData = new ArrayList<>();
 
@@ -80,8 +113,17 @@ public class RAAlgorithm {
         return valuesData;
     }
 
+    /*
+    * Funcion de distribucion exponencial
+    *
+    * params    dentro se realiza el cast  String ==> Integer
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * lambda = String => lambda
+    * m      = String => m
+    * n      = String => n
+    * */
     public static ArrayList<Float> generateExponential(ArrayList<Integer> arrayValues, String lambda, String m, String n){
-        //ArrayList<Float> valuesData = new ArrayList<>();
         float value_lambda = Float.valueOf(lambda);
         int value_m = Integer.parseInt(m);
         int value_n = Integer.parseInt(n);
@@ -105,7 +147,17 @@ public class RAAlgorithm {
         return X;
     }
 
-
+    /*
+    * Funcion de distribucion Normal
+    *
+    * params    dentro se realiza el cast  String ==> Integer
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * mean = String => mean
+    * var  = String => var
+    * m    = String => m
+    * n    = String => n
+    * */
     public static ArrayList<Float> generateNormal(ArrayList<Integer> arrayValues, String mean, String var, String m, String n){
         ArrayList<Float> result = new ArrayList<>();
 
@@ -122,7 +174,6 @@ public class RAAlgorithm {
 
         return result;
     }
-
 
     static float normalZ(ArrayList<Integer> arrayValues, int n, int m) {
         ArrayList<Float> R = null;
@@ -145,6 +196,18 @@ public class RAAlgorithm {
 
     }
 
+    /*
+    * Funcion de distribucion Triangular
+    *
+    * params    dentro se realiza el cast  String ==> Integer
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * a  = String => a
+    * b  = String => b
+    * c  = String => c
+    * n  = String => n
+    * m  = String => m
+    * */
     public static ArrayList<Float> generateTriangular(ArrayList<Integer> arrayValues, String n, String m, String a, String b, String c){
 
         int value_n = Integer.parseInt(n);
@@ -178,7 +241,16 @@ public class RAAlgorithm {
         return X;
     }
 
-
+    /*
+    * Funcion de distribucion Poisson
+    *
+    * params    dentro se realiza el cast  String ==> Integer
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * lambda  = String => lambda
+    * n       = String => n
+    * m       = String => m
+    * */
     public static ArrayList<Float> generatePoisson(ArrayList<Integer> arrayValues,String lambda, String m, String n){
 
         int value_n = Integer.parseInt(n);
@@ -212,6 +284,18 @@ public class RAAlgorithm {
         return X;
     }
 
+    /*
+    * Funcion de distribucion Binomial
+    *
+    * params    dentro se realiza el cast  String ==> Integer
+    *
+    * dataset de número aleatorios con uso de un generador = ArrayList<Integer> => arrayValues
+    * x0  = String => x0
+    * a   = String => a
+    * m   = String => m
+    * n   = String => n
+    * p   = String => p
+    * */
     public static ArrayList<Float> generateBinommial(ArrayList<Integer> arrayValues, String x0, String a, String m, String n, String p){
 
         ArrayList<Float> R = null;
