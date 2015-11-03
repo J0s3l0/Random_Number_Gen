@@ -14,6 +14,8 @@
     <string name="title">NuGen</string>
     <string name="agree">Ok</string>
     <string name="disagree">Cancelar</string>
+    <string name="progress_dialog">Generando</string>
+    <string name="please_wait">Por favor espere...</string>
 
     <string-array name="namesFunctions">
         <item>Uniforme</item>

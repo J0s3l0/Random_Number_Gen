@@ -145,26 +145,17 @@ public class RAGenActivity extends AppCompatActivity {
 
     public void onGeneratorClicked(View v){
 
-        valuesGen.put("generator", generator);
-        valuesGen.put("x0", x0);
-        valuesGen.put("a", a);
-        valuesGen.put("c", c);
-        valuesGen.put("m", m);
-        valuesGen.put("function", funcion);
-        valuesGen.put("valueN", paramv_n.getText().toString());
-        valuesGen.put("valueM", paramv_m.getText().toString());
         Toast.makeText(this, "Datos almacenados", Toast.LENGTH_LONG).show();
 
         Bundle bundle = new Bundle();
-        //bundle.putSerializable("HASHPARAMS",valuesGen);
         bundle.putString("GENERATOR", generator);
         bundle.putString("VALUE_X0", x0);
         bundle.putString("VALUE_A", a);
         bundle.putString("VALUE_C", c);
         bundle.putString("VALUE_MOD", m);
         bundle.putString("FUNCTION", funcion);
-        bundle.putString("VALUE_N", empty(paramv_n.getText().toString())? "0": paramv_n.getText().toString());
-        bundle.putString("VALUE_M", empty(paramv_m.getText().toString())? "0": paramv_m.getText().toString());
+        bundle.putString("VALUE_N", empty(paramv_n.getText().toString())? "1000": paramv_n.getText().toString());
+        bundle.putString("VALUE_M", empty(paramv_m.getText().toString())? "1000": paramv_m.getText().toString());
 
         Intent i = new Intent(this, RAPlotData.class);
         i.putExtras(bundle);
@@ -221,28 +212,5 @@ public class RAGenActivity extends AppCompatActivity {
     private boolean empty(String data){
         return data.isEmpty();
     }
-
-    /*
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_gen, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }*/
 
 }
