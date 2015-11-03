@@ -3,9 +3,154 @@
     android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray_light"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".GenActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:id="@+id/generator"
+                style="@style/HomeLayout">
+
+                <RadioGroup
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="@dimen/gen_margin"
+                    android:paddingBottom="@dimen/gen_margin">
+
+                    <RadioButton
+                        android:id="@+id/radio_mixed"
+                        style="@style/TextSimple"
+                        android:text="@string/generator_mixed"
+                        android:onClick="onGenClicked"
+                        android:layout_marginRight="20dp"
+                        android:checked="true"/>
+
+                    <RadioButton
+                        android:id="@+id/radio_multiplicative"
+                        style="@style/TextSimple"
+                        android:text="@string/generator_multiplicative"
+                        android:onClick="onGenClicked"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/parameters"
+                android:layout_below="@+id/generator"
+                style="@style/HomeLayout">
+
+                <Button
+                    style="@style/TextSimpleButton"
+                    android:text="@string/parameters"
+                    android:onClick="onParams"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="4dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/param_value_x0"
+                        style="@style/TextSimpleParams"
+                        android:text="x0 = 0"/>
+
+                    <TextView
+                        android:id="@+id/param_value_a"
+                        style="@style/TextSimpleParams"
+                        android:text="a = 0"/>
+
+                    <TextView
+                        android:id="@+id/param_value_c"
+                        style="@style/TextSimpleParams"
+                        android:text="c = 0"/>
+
+                    <TextView
+                        android:id="@+id/param_value_m"
+                        style="@style/TextSimpleParams"
+                        android:text="m = 0"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/function"
+                android:layout_below="@+id/parameters"
+                style="@style/HomeLayout">
+
+                <Button
+                    style="@style/TextSimpleButton"
+                    android:text="@string/function"
+                    android:onClick="onListFunction"/>
+
+                <TextView
+                    android:id="@+id/value_function"
+                    style="@style/TextSimpleFunction"
+                    android:gravity="center_horizontal"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/parameters2"
+                android:layout_below="@+id/function"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/gen_margin"
+                android:paddingTop="@dimen/gen_margin"
+                android:paddingBottom="@dimen/gen_margin"
+                android:background="@color/white"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/paramv_m"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLength="9"
+                    android:hint="M"
+                    android:inputType="number"/>
+
+                <EditText
+                    android:id="@+id/paramv_n"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:maxLength="9"
+                    android:hint="N"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/parameters2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="@dimen/gen_margin"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/md_material_blue_800"
+                    android:text="Generar"
+                    android:textColor="@color/white"
+                    android:textSize="24dp"
+                    android:onClick="onGeneratorClicked"
+                    android:layout_weight="1"
+                    android:height="50dp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
 
 </RelativeLayout>
